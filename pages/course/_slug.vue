@@ -1,50 +1,11 @@
 <template>
-  <section class="">
-    <div class="single__page_content">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="courses_text pt-5">
-              <div class="courses__card_rating">
-                <div class="rating">
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <span>5.00 (7)</span>
-                </div>
-              </div>
-              <h2>{{ course.name }}</h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="container">
-            <div class="col-12">
-              <div class="single__page_category_wishlist">
-                <div class="single_category">
-                  <span>Categories :</span>
-                  <a href="#">Shamim Ahmed</a>
-                </div>
-                <div class="single_wishlist">
-                  <a href="#"> <i class="fa fa-bookmark"></i> Wishlist </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- .single_page_content -->
-
-    <div class="section single__page_main_area">
+  <div class="">
+    <section class="single__page_main_area">
       <div class="container">
         <div class="row gx-5">
           <div class="col-md-8">
             <div class="main_area_single_items">
-              <img class="img-fluid" :src="course.thumbnail" alt="image" />
+              <img class="img-fluid" src="course.thumbnail" alt="image" />
             </div>
 
             <div class="course__info_review">
@@ -90,7 +51,10 @@
                     <div class="info_single-item">
                       <div class="about_course">
                         <h3>About Course</h3>
-                        <p>{{ course.description }}</p>
+                        <p>
+                          This course teaches views for absolute beginners.
+                          Explains what View JS is, and how it works.
+                        </p>
                       </div>
 
                       <div class="learn_course">
@@ -140,6 +104,56 @@
                               id="collapseOne"
                               class="accordion-collapse collapse show"
                               aria-labelledby="headingOne"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                <div class="">
+                                  <ul>
+                                    <li
+                                      class="
+                                        d-flex
+                                        justify-content-between
+                                        icon
+                                        mb-3
+                                      "
+                                    >
+                                      <div>
+                                        <span
+                                          ><i class="fa fa-youtube-play"></i
+                                        ></span>
+                                        <span
+                                          >How to use Vue (using the CDN)</span
+                                        >
+                                      </div>
+                                      <div>
+                                        <span>09.18</span>
+                                        <span><i class="fa fa-lock"></i></span>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo"
+                                aria-expanded="false"
+                                aria-controls="collapseTwo"
+                              >
+                                <strong
+                                  >The Vue CLI (for Bigger Projects)</strong
+                                >
+                              </button>
+                            </h2>
+                            <div
+                              id="collapseTwo"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="headingTwo"
                               data-bs-parent="#accordionExample"
                             >
                               <div class="accordion-body">
@@ -505,7 +519,7 @@
                       </li>
                       <li>
                         <span class="dots"></span>
-                        <span>{{ course.requirements }}</span>
+                        <span>Basic inspect element usage should be known</span>
                       </li>
                     </ul>
                   </div>
@@ -517,7 +531,8 @@
                       <li>
                         <span class="dots"></span>
                         <span
-                          >{{ course.audience }}</span
+                          >This course is for those who are completely new to
+                          learning HTML</span
                         >
                       </li>
                     </ul>
@@ -528,28 +543,28 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
-
+  auth: false,
   data() {
     return {
-      course: {}
-    }
+      course: {},
+    };
   },
   created() {
-    this.getCourseData()
+    this.getCourseData();
   },
   methods: {
     async getCourseData() {
-      const res = await this.$axios.get(this.$route.path).then((res)=>{
-        this.course = res.data.course[0]
+      const res = await this.$axios.get(this.$route.path).then((res) => {
+        this.course = res.data.course[0];
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

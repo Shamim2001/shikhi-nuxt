@@ -47,14 +47,41 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://shikhi.cosmeticplugs.com/api'
+    // baseURL: 'https://shikhi.cosmeticplugs.com/api'
+    baseURL: 'http://shikhi-backend.test/api',
+    credentials: true
   },
+
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost:8000',
+
+        endpoints: {
+          login: { url: '/api/login', method: 'post' },
+          logout: { url: '/api/logout', method: 'post' },
+          user: { url: '/api/user', method: 'get' }
+        },
+        user: {
+          property: 'user',
+        },
+
+      },
+    },
+  },
+  router: {
+    middleware: ['auth']
+  },
+
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

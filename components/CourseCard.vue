@@ -50,7 +50,7 @@
 <script>
 export default {
   props: {
-    course: [],
+    course: {},
   },
 };
 </script>

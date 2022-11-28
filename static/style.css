@@ -1,4 +1,4 @@
-/* 
+/*
 
 Project Name : Shikhi
 Author : Shamim Ahmed
@@ -116,7 +116,7 @@ section.shikhi__header_area {
 }
 .shikhi__header_menu ul li a {
   font-size: 1rem;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   display: block;
   color: #333;
 }

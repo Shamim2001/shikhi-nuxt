@@ -20,23 +20,26 @@
 <script>
 export default {
   name: "IndexPage",
-
+  auth: false,
   data() {
     return {
       courses: []
     }
   },
+  mounted () {
+    this.getCourses()
+  },
   methods: {
     async getCourses() {
-      const course = await this.$axios.get('/courses').then((res)=> {
-        if (!res.data.error) {
+      const res = await this.$axios.get('/courses').then((res)=> {
+
+        if (res.data.error) {
           this.courses = res.data.courses
+
         }
       })
     }
   },
-  mounted () {
-    this.getCourses()
-  }
+
 };
 </script>

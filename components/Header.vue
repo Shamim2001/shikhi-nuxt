@@ -10,8 +10,18 @@
         <div class="col my-auto" style="text-align: right;">
           <div class="shikhi__header_menu">
             <ul>
-              <li><nuxt-link to="/login">Login</nuxt-link></li>
-              <li><nuxt-link to="/">Courses</nuxt-link></li>
+              <li class="nav-link" v-if="$auth.loggedIn">
+                <p>{{ $auth.user.name }}</p>
+              </li>
+              <li class="nav-link" v-if="!$auth.loggedIn">
+                <nuxt-link to="/login">Login</nuxt-link>
+                </li>
+              <li>
+                <nuxt-link to="/">Courses</nuxt-link>
+              </li>
+              <li class="nav-link" v-if="$auth.loggedIn">
+                <button type="button" @click.prevent="logout">log out</button>
+                </li>
             </ul>
           </div>
         </div>
@@ -23,6 +33,11 @@
 
 <script>
 export default {
+  methods: {
+    logout() {
+      this.$auth.logout();
+    }
+  },
 
 }
 </script>
